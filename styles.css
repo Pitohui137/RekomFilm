@@ -1,3 +1,6 @@
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 :root {
   --purple: #8323FF;
   --pink: #FF2DAF;
@@ -8,15 +11,18 @@
   --light-gray: #8B8D9B;
 }
 
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Outfit';
+  font-family: 'Outfit', sans-serif;
 }
 
 body {
-  background: var(--gradientes-gradiente-hover, linear-gradient(90deg, #9F55FF 0%, #FF46B9 100%));
+  background: linear-gradient(90deg, #9F55FF 0%, #FF46B9 100%);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -25,29 +31,135 @@ body {
   padding: 20px;
 }
 
+/* ============================================
+   CONTAINER
+   ============================================ */
 .container {
-  width: 846px;
+  width: 900px;
   min-height: 632px;
   border-radius: 16px;
-  background: var(--dark-gray, #1E1F28);
+  background: var(--dark-gray);
   box-shadow: 0px -3px 22px 0px rgba(0, 0, 0, 0.35);
   display: flex;
-  padding: 64px 96px;
+  padding: 48px 64px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 36px;
 }
 
+/* ============================================
+   HEADER STYLES
+   ============================================ */
 header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-top {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+header .logo {
+  font-size: 32px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #8323FF 0%, #FF2DAF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+  text-shadow: 0 0 30px rgba(131, 35, 255, 0.3);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  position: relative;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 10px rgba(131, 35, 255, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 20px rgba(255, 45, 175, 0.6));
+  }
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+.search-container {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--soft-gray);
+  background: var(--gray);
+  color: white;
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(131, 35, 255, 0.15);
+  background: var(--soft-gray);
+}
+
+.search-input::placeholder {
+  color: var(--light-gray);
+}
+
+.search-btn {
+  background: var(--soft-gray);
+  transition: all 0.3s ease;
+  padding: 12px 24px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: var(--purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(131, 35, 255, 0.4);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button {
+  color: white;
+  font-size: 14px;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 header button {
-  background: var(--gradientes-gradiente-normal, linear-gradient(90deg, #8323FF 0%, #FF2DAF 100%));
+  background: linear-gradient(90deg, #8323FF 0%, #FF2DAF 100%);
   transition: all 0.3s ease;
 }
 
@@ -60,31 +172,12 @@ header button:active {
   transform: scale(0.98);
 }
 
-header button img {
-  height: 24px;
+header button .icon {
   transition: transform 0.3s ease;
 }
 
-header button:hover img {
-  transform: rotate(180deg);
-}
-
-button {
-  color: white;
-  font-size: 14px;
-  display: flex;
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+header button:hover .icon {
+  transform: rotate(360deg) scale(1.2);
 }
 
 .loading-btn {
@@ -92,23 +185,42 @@ button:disabled {
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
+/* ============================================
+   RECOMMENDATIONS GRID
+   ============================================ */
 .recomendations {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+  gap: 40px 24px;
   min-height: 420px;
 }
 
+/* Result Info */
+.result-info {
+  grid-column: 1 / -1;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 12px 0;
+  background: var(--soft-gray);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.result-info strong {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+/* ============================================
+   MOVIE CARD STYLES
+   ============================================ */
 .movie {
   color: white;
   display: flex;
@@ -133,6 +245,16 @@ button:disabled {
   font-weight: 500;
 }
 
+.title .rating {
+  color: var(--yellow);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================
+   POSTER STYLES
+   ============================================ */
 .poster-wrapper {
   position: relative;
   width: 194px;
@@ -159,6 +281,9 @@ button:disabled {
   transform: scale(1.02);
 }
 
+/* ============================================
+   OVERLAY STYLES
+   ============================================ */
 .movie-overlay {
   position: absolute;
   top: 0;
@@ -207,6 +332,9 @@ button:disabled {
   opacity: 1;
 }
 
+/* ============================================
+   TIME & DATE
+   ============================================ */
 .movie .poster .time-and-date {
   width: 194px;
   display: flex;
@@ -216,9 +344,18 @@ button:disabled {
   font-size: 12px;
 }
 
+.time, .date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================
+   MOVIE BUTTON
+   ============================================ */
 .movie button {
   width: 100%;
-  background: var(--cores-cinza, #2B2B37);
+  background: var(--gray);
   transition: all 0.3s ease;
 }
 
@@ -232,42 +369,16 @@ button:disabled {
   transform: translateY(0);
 }
 
-.title .rating {
-  color: var(--yellow);
-  display: flex;
-  align-items: center;
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.rating .icons,
-.time-and-date .icons {
-  width: 24px;
-  height: 20px;
-}
-
-.time,
-.date {
-  display: flex;
-  align-items: center;
-}
-
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
 .loading {
   width: 100%;
   height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
+  grid-column: 1 / -1;
 }
 
 .spinner {
@@ -294,7 +405,9 @@ button:disabled {
   display: inline-block;
 }
 
-/* Detail Modal Styles */
+/* ============================================
+   DETAIL MODAL
+   ============================================ */
 .detail-modal {
   position: fixed;
   top: 0;
@@ -305,7 +418,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 20px;
@@ -333,6 +446,9 @@ button:disabled {
   transform: scale(1);
 }
 
+/* ============================================
+   DETAIL HEADER
+   ============================================ */
 .detail-header {
   position: relative;
   height: 400px;
@@ -372,17 +488,14 @@ button:disabled {
   flex-wrap: wrap;
 }
 
-.detail-meta span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .detail-rating {
   color: var(--yellow);
   font-weight: 600;
 }
 
+/* ============================================
+   CLOSE BUTTON
+   ============================================ */
 .close-detail {
   position: absolute;
   top: 16px;
@@ -400,8 +513,8 @@ button:disabled {
   justify-content: center;
   transition: all 0.3s ease;
   border-radius: 50%;
-  line-height: 1;
   z-index: 10;
+  line-height: 1;
 }
 
 .close-detail:hover {
@@ -410,6 +523,9 @@ button:disabled {
   background: rgba(0, 0, 0, 0.9);
 }
 
+/* ============================================
+   DETAIL BODY
+   ============================================ */
 .detail-body {
   padding: 32px;
 }
@@ -431,6 +547,9 @@ button:disabled {
   font-size: 14px;
 }
 
+/* ============================================
+   STREAMING LINKS
+   ============================================ */
 .streaming-links {
   display: flex;
   flex-wrap: wrap;
@@ -456,6 +575,9 @@ button:disabled {
   box-shadow: 0 6px 20px rgba(131, 35, 255, 0.4);
 }
 
+/* ============================================
+   GENRE TAGS
+   ============================================ */
 .genre-tags {
   display: flex;
   flex-wrap: wrap;
@@ -470,6 +592,9 @@ button:disabled {
   color: white;
 }
 
+/* ============================================
+   CAST GRID
+   ============================================ */
 .cast-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -499,7 +624,9 @@ button:disabled {
   color: var(--light-gray);
 }
 
-/* Trailer Modal Styles */
+/* ============================================
+   TRAILER MODAL
+   ============================================ */
 .trailer-modal {
   position: fixed;
   top: 0;
@@ -572,6 +699,9 @@ button:disabled {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* ============================================
+   VIDEO CONTAINER
+   ============================================ */
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -590,34 +720,27 @@ button:disabled {
   border-radius: 8px;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE STYLES - TABLET
+   ============================================ */
 @media (max-width: 900px) {
   .container {
     width: 95%;
     padding: 32px 24px;
-    min-height: auto;
   }
   
   .recomendations {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+  }
+
+  .header-top {
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
+    gap: 16px;
   }
-  
-  .movie {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .movie .poster img,
-  .movie-overlay,
-  .poster-wrapper {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .movie .poster .time-and-date {
-    width: 100%;
+
+  .search-container {
+    max-width: 100%;
   }
 
   .detail-header {
@@ -633,21 +756,93 @@ button:disabled {
   }
 }
 
+/* ============================================
+   RESPONSIVE STYLES - MOBILE
+   ============================================ */
 @media (max-width: 500px) {
   .container {
     padding: 24px 16px;
   }
-  
-  header {
-    flex-direction: column;
-    gap: 16px;
+
+  .recomendations {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-  
+
+  .movie {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .poster-wrapper,
+  .movie .poster img,
+  .movie-overlay,
+  .movie .poster .time-and-date {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .movie .poster img {
+    height: 420px;
+  }
+
+  .movie-overlay {
+    height: 420px;
+  }
+
+  .detail-body {
+    padding: 20px;
+  }
+
   .modal-content {
     padding: 16px;
   }
-  
-  .modal-header h3 {
-    font-size: 16px;
+
+  .detail-header {
+    height: 250px;
   }
+
+  .detail-title {
+    font-size: 20px;
+  }
+
+  .streaming-btn {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  .search-container {
+    min-width: 100%;
+  }
+
+  .search-input {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .search-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+.detail-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.detail-content::-webkit-scrollbar-track {
+  background: var(--gray);
+  border-radius: 0 16px 16px 0;
+}
+
+.detail-content::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 4px;
+}
+
+.detail-content::-webkit-scrollbar-thumb:hover {
+  background: var(--pink);
 }
