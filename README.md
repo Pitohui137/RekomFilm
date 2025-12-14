@@ -8,7 +8,7 @@
 ### ✨ Fitur Utama
 
 - 🎯 **Rekomendasi Random** - Dapatkan 3 rekomendasi film/TV show trending secara acak
-- 🔍 **Pencarian Cerdas** - Cari film dan TV show favorit dengan mudah
+- 🔍 **Pencarian Cerdas** - Cari film dan TV show favorit dengan mudah dan cepat
 - 📊 **Informasi Lengkap** - Rating, durasi, tahun rilis, sinopsis, genre, dan cast
 - 🎬 **Trailer YouTube** - Tonton trailer langsung dari website
 - 🌐 **Link Streaming** - Akses cepat ke Netflix, Disney+, Prime Video, HBO Max, Hulu, dan Vidio
